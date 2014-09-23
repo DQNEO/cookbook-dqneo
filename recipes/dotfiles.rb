@@ -45,3 +45,13 @@ execute "install emacs packages" do
   environment "HOME" => '/home/vagrant'
   command "emacs --batch -l /home/vagrant/.emacs.d/init.el"
 end
+
+# install cask
+execute "install cask" do
+  action :nothing
+  user "vagrant"
+  group "vagrant"
+  cwd "/home/vagrant"
+  environment "HOME" => '/home/vagrant'
+  command "curl -fsSkL https://raw.github.com/cask/cask/master/go | python"
+end
